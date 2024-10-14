@@ -1,0 +1,14 @@
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfplan
+*.tfplan.*
+.terraform/
+secrets.tf
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+.env
+*.lock.hcl 
