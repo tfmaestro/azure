@@ -21,7 +21,7 @@ variable "resource_group_name" {
 
 variable "subnets" {
   description = "Map of private subnets configuration"
-  type        = map(object({
+  type = map(object({
     address_prefix = string
   }))
 }
