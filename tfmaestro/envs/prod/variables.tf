@@ -14,7 +14,7 @@ variable "location" {
   default     = "westus"
 }
 
-variable "resource_group_name" {
-  description = "Name of the resource group"
+variable "environment" {
+  description = "Type of environment"
   type        = string
 }
