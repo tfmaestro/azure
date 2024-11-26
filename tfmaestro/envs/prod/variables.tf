@@ -13,6 +13,7 @@ variable "address_space" {
 variable "location" {
   description = "Location for the resources"
   type        = string
+  default     = "westus"
 }
 
 variable "environment" {
