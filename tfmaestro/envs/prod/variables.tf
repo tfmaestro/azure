@@ -16,6 +16,7 @@ variable "location" {
 }
 
 variable "environment" {
-  description = "Environment for the resources"
+  description = "Type of environment"
   type        = string
 }
+
