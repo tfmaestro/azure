@@ -2,10 +2,6 @@ variable "name" {
   type = string
 }
 
-variable "environment" {
-  type = string
-}
-
 variable "address_space" {
   description = "Address space for the virtual network"
   type        = list(string)
