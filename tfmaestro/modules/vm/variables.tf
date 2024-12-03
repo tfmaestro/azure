@@ -26,3 +26,14 @@ variable "network_name" {
   description = "The name of the network"
   type        = string
 }
+
+variable "firewall_rules" {
+  description = "Map of firewall rules configuration"
+  type = map(object({
+    protocol         = string
+    ports            = list(string)
+    priority         = number
+    description      = string
+    source_address_prefix = list(string)
+  }))
+}

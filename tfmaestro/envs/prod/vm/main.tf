@@ -14,4 +14,5 @@ module "vm" {
   vm_config               = var.vm_config
   environment             = var.environment
   network_name            = var.network_name
+  firewall_rules          = var.firewall_rules
 }

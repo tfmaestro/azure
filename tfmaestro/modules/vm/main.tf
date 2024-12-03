@@ -67,3 +67,31 @@ resource "azurerm_linux_virtual_machine" "vm" {
     Description = each.value.machine_description
   }
 }
+
+resource "azurerm_network_security_group" "nsg" {
+  name                = "${var.network_name}-nsg"
+  location            = var.resource_group_location
+  resource_group_name = var.resource_group_name
+
+  dynamic "security_rule" {
+    for_each = var.firewall_rules
+    content {
+      name                       = "${var.network_name}-${security_rule.key}"
+      priority                   = security_rule.value.priority
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = security_rule.value.protocol
+      source_port_range          = "*"
+      destination_port_range     = security_rule.value.protocol == "Icmp" ? "*" : join(",", security_rule.value.ports)
+      source_address_prefix      = join(",", security_rule.value.source_address_prefix)
+      destination_address_prefix = "*"
+      description                = security_rule.value.description
+    }
+  }
+}
+
+resource "azurerm_network_interface_security_group_association" "nsg_association" {
+  for_each                    = var.vm_config
+  network_interface_id        = azurerm_network_interface.main[each.key].id
+  network_security_group_id    = azurerm_network_security_group.nsg.id
+}

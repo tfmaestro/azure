@@ -16,3 +16,34 @@ vm_config = {
     machine_description = "Internal web application instance"
   }
 }
+
+firewall_rules = {
+  "allow-http" = {
+    protocol              = "Tcp"
+    ports                 = ["80"]
+    priority              = 1000
+    description           = "Allow http communication."
+    source_address_prefix = ["0.0.0.0/0"]
+  }
+  "allow-https" = {
+    protocol              = "Tcp"
+    ports                 = ["443"]
+    priority              = 1001
+    description           = "Allow https communication."
+    source_address_prefix = ["0.0.0.0/0"]
+  }
+  "allow-ssh-vpn" = {
+    protocol              = "Tcp"
+    ports                 = ["22"]
+    priority              = 101
+    description           = "Allow ssh communication via VPN."
+    source_address_prefix = ["37.109.162.21/32"]
+  }
+  "allow-icmp" = {
+    protocol              = "Icmp"
+    ports                 = []
+    priority              = 2000
+    description           = "Allow ICMP."
+    source_address_prefix = ["0.0.0.0/0"]
+  }
+}
