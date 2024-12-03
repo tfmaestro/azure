@@ -37,7 +37,7 @@ firewall_rules = {
     ports                 = ["22"]
     priority              = 101
     description           = "Allow ssh communication via VPN."
-    source_address_prefix = ["37.109.162.21/32"]
+    source_address_prefix = ["<TWOJE_IP>/32"]
   }
   "allow-icmp" = {
     protocol              = "Icmp"
