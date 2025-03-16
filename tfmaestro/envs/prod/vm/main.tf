@@ -2,11 +2,6 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "rg" {
-  name     = "${var.environment}-rg"
-  location = var.location
-}
-
 module "vm" {
   source                  = "../../../modules/vm"
   resource_group_name     = "${var.environment}-rg"
